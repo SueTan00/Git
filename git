@@ -1,0 +1,68 @@
+Before using git, set up your name and email which are going to be your signiture when you commit, using git config to do it:
+  $ git config --global user.name "Xueting Tan"
+  $ git config --global user.email "xueting_tan@***.com"
+  
+***********************************************************************************************
+  
+To get a copy of a project, we need to know the address(git URL) of this project.
+  $ git clone https://github.com/***
+When it's done, you can see the project (using "$ ls" command) has already appeared in your computer.
+
+To put an existing project under git version control: 
+  $ cd Hello-world
+  $ git init
+Using "$ ls -la" command, you can see a ".git" catalog has been created.
+
+************************************************************************************************
+
+Git basic steps:
+  1. Create or edit files.
+  2. Using "$ git add" command to add files from step 1 to local buffer.
+  3. Using "$ git commit" command to submit to local.
+  4. (Optional) Using "$ git push" command to synchronise it to remote.
+  
+************************************************************************************************
+Basic step 1, 2 and 3:
+  
+Go to your project for example Hello-world, make some changes like create a file etc.(basic step 1 above):
+  $ cd Hello-world
+  $ touch file1
+  $ echo "test" >> file1
+Now you can use git status command to check the status:
+  $ git status
+And you could see there will be some untracked status, now all we need to do is using git add command.(basic step 2 above):
+  $ git add file1
+After you add all the new files and all the changes you made to local buffer, use commit command.(basic step 3 above):
+  $ git commit -m "add 1 file"
+  (using -m to add comments about what changes you made this time)
+Type in git status command again, you will not see any un-commit file now.
+
+*************************************************************************************************
+Basic step 4:
+
+Now we want to connect to remote server, for example: github:
+First, Add SSH Key:(you don't have to add it everytime, just once)
+  1.Generate SSH Key:
+    $ ssh-keygen -t rsa -C "yourGithubRegisteredEmail@example.com"
+    (if succeed, there will be a .ssh fold uder ~/)
+    $ cd ~/.ssh
+    $ cat id_rsa.pub
+    (copy the key)
+  2. Add SSH Key to github:
+    Go to "settings"
+    Go to "SSH and GPG keys"
+    Click "New SSH key"
+    (Title depends on you, paste key in Key area, click "Add SSH key")
+    (To confirm whether it's successful)
+    $ ssh -T git@github.com
+    Hi ***! You've successfully authenticated, but GitHub does not provide shell access.
+Second, create a new repository in github for example "Hello-world".
+Third, push an existing repository from the command line:(basic step 4)
+    $ cd Hello-world
+    (make sure it's under git version control, which means used "$ git init")
+    $ git remote add origin git@github.com:YourGithubUsername/Dictionary.git
+    $ git push -u origin master
+    
+  
+
+  
