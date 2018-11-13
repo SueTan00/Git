@@ -1,0 +1,80 @@
+One repository can maintain multiple branches
+
+****************************************************************************************
+
+Create an experimental branch and edit file1 under experimental branch:
+
+Create a new branch called experimental for project Hello-world:
+  $ cd Hello-world
+  $ git branch experimental
+Using git branch command to check the branch status:
+  $ git branch
+  result:
+  experimental
+* master
+  (master is the default branch. asterisk-* marks the current working branch)
+Create a file in master branch:
+  $ touch file1
+Switch to branch experimental
+  $ git checkout experimental
+Edit the file1 in experimental branch:
+  $ echo "update" >> file1
+Submit the changing:
+  $ git add file1
+  $ git commit -m "update file1"
+Check the content of file1:
+  $ cat file1
+  result:
+  update
+Switch back to master branch:
+  $ git checkout master
+Check the content of file1 under the master branch:
+  # cat file1
+  (You should not see the update in file1, because that is under experimental branch.)
+  
+  ****************************************************************************************
+  
+  Create and edit file2 under master branch:
+  
+  $ touch file2
+  $ echo "update again" >> file2
+  $ git add file2
+  $ git commit -m "create and update file2 on master"
+  $ cat file2
+  result:
+  update again
+  
+  ****************************************************************************************
+  
+  Merge experimental branch with master branch:
+  
+  $ git checkout master
+  $ git merge -m "merge experimental branch" experimental
+  (Because they edited 2 different files, there wouldn't be a conlict when merging.)
+  (But if two branches edit same file, the merge will fail.)
+  
+  ****************************************************************************************
+  
+  Delete branch experimental:
+  
+  If we no long need experimental branch anymore, delete it:
+  $ git branch -d experimental
+  (only for branches which have been merged to master)
+  $ git branch -D experimental
+  (Delete branch compulsively)
+  
+  ****************************************************************************************
+  
+  Revoke a merge:
+  $ git reset ==hard HEAD^
+  
+  ****************************************************************************************
+  
+  Check all the commit histories
+  $ git log
+  ("Enter" to flip page, "q" to exit)
+  
+  
+
+  
+  
