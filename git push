@@ -1,0 +1,16 @@
+Go to the place you want store the file:
+    $ cd desktop
+
+Download the file from remote repository and make some changes locally:
+    $ git clone https://github.com/SueTan00/Git.git
+    $ cd Git
+    $ touch "git push"
+    $ echo "test" >> git push
+    $ git add *
+    $ git commit -m "push test"
+
+Push the change from local to remote:
+    $ git push https://github.com/SueTan00/Git.git
+    
+If fail, might be changes occurred at remote as well, so pull first under the clone file:
+    $ git pull
